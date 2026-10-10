@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-accent="cyan">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shiheb Amri — Full-Stack Engineer & Cybersecurity Specialist</title>
-  <meta name="description" content="Portfolio of Shiheb Amri (shihebamrii). Full-Stack Engineer & Cybersecurity Specialist building local-first systems, DNS firewalls, distributed honeypots, and high-performance software.">
+  <title>Shiheb Amri — Full-Stack Engineer &amp; Cybersecurity Specialist</title>
+  <meta name="description" content="Portfolio of Shiheb Amri (shihebamrii). Full-Stack Engineer &amp; Cybersecurity Specialist building local-first systems, DNS firewalls, distributed honeypots, and high-performance software.">
   <meta name="keywords" content="Shiheb Amri, shihebamrii, Cybersecurity, Full-Stack Developer, Rust, Tauri, SolidJS, Python, Flask, Docker, Linux, DNS Firewall, Honeypots">
   <meta name="author" content="Shiheb Amri">
   
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://shihebamrii.github.io/">
-  <meta property="og:title" content="Shiheb Amri — Full-Stack Engineer & Cybersecurity Specialist">
+  <meta property="og:title" content="Shiheb Amri — Full-Stack Engineer &amp; Cybersecurity Specialist">
   <meta property="og:description" content="Local-first platforms, network intrusion deception, DNS firewalls, and zero-trust engineering.">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/238729275?v=4">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shiheb Amri — Full-Stack Engineer & Cybersecurity Specialist">
+  <meta name="twitter:title" content="Shiheb Amri — Full-Stack Engineer &amp; Cybersecurity Specialist">
   <meta name="twitter:description" content="Local-first platforms, network intrusion deception, DNS firewalls, and zero-trust engineering.">
   <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/238729275?v=4">
 
@@ -27,7 +27,7 @@
   <!-- Typography: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -48,9 +48,23 @@
         <span class="telemetry-stat" id="telemetry-ping">RTT: 18ms</span>
         <span class="telemetry-divider">/</span>
         <span class="telemetry-stat">SEC: TLS 1.3</span>
+        <span class="telemetry-divider">/</span>
+        <!-- Audio FX Toggle -->
+        <button class="telemetry-btn" id="audio-toggle-btn" title="Toggle tactile mechanical audio feedback">
+          <span id="audio-icon">🔇</span>
+          <span id="audio-label">FX: OFF</span>
+        </button>
       </div>
 
       <div class="telemetry-right">
+        <!-- Theme Accent Switcher -->
+        <div class="theme-picker" title="Change Accent Protocol">
+          <button class="theme-dot dot-cyan active" data-theme="cyan" title="Obsidian Cyan"></button>
+          <button class="theme-dot dot-emerald" data-theme="emerald" title="Matrix Emerald"></button>
+          <button class="theme-dot dot-violet" data-theme="violet" title="Neon Violet"></button>
+          <button class="theme-dot dot-amber" data-theme="amber" title="Amber Terminal"></button>
+        </div>
+
         <button class="terminal-trigger-btn" id="open-terminal-btn" aria-label="Open Interactive Terminal">
           <span class="terminal-icon">&gt;_</span>
           <span class="terminal-label">CLI Terminal</span>
@@ -79,7 +93,7 @@
     <section class="hero-section" id="overview">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        <span class="badge-text">Available for High-Impact Engineering & Security Contracts</span>
+        <span class="badge-text">Available for High-Impact Engineering &amp; Security Contracts</span>
       </div>
 
       <div class="hero-content">
@@ -121,32 +135,108 @@
           </div>
         </div>
 
-        <!-- Bento Hero Highlights -->
-        <div class="hero-bento">
-          <div class="bento-card bento-metric">
-            <div class="metric-number">18+</div>
-            <div class="metric-label">Public Engineering Repositories</div>
-            <div class="metric-sub">Distributed honeypots, DNS firewalls, VPS control planes</div>
-          </div>
-
-          <div class="bento-card bento-core">
-            <div class="card-tag">SYSTEM ARCHITECTURE</div>
-            <h3 class="bento-title">Agentless &amp; Local-First</h3>
-            <p class="bento-desc">Zero telemetry overhead. Direct SSH tunnels, native container control, and localized execution.</p>
-          </div>
-
-          <div class="bento-card bento-languages">
-            <div class="card-tag">PRIMARY ARSENAL</div>
-            <div class="stack-badges">
-              <span class="badge">Rust</span>
-              <span class="badge">Tauri</span>
-              <span class="badge">SolidJS</span>
-              <span class="badge">Python</span>
-              <span class="badge">Docker</span>
-              <span class="badge">Linux</span>
-              <span class="badge">TypeScript</span>
-              <span class="badge">Flask</span>
+        <!-- Live Daemon Monitor Console (Hero Right) -->
+        <div class="hero-daemon-console">
+          <div class="daemon-header">
+            <div class="daemon-dots">
+              <span class="d-dot d-red"></span>
+              <span class="d-dot d-yellow"></span>
+              <span class="d-dot d-green"></span>
             </div>
+            <div class="daemon-title">daemon://shiheb.local/telemetry.stream</div>
+            <span class="daemon-live-tag">LIVE</span>
+          </div>
+          <div class="daemon-body" id="daemon-stream">
+            <div class="d-row"><span class="d-time">[00:00:01]</span> <span class="d-tag-sys">[INIT]</span> <span class="d-msg">Kernel namespaces initialized (PID 1)</span></div>
+            <div class="d-row"><span class="d-time">[00:00:02]</span> <span class="d-tag-sec">[AUTH]</span> <span class="d-msg">SSH tunnel established (Ed25519)</span></div>
+            <div class="d-row"><span class="d-time">[00:00:03]</span> <span class="d-tag-app">[VESSEL]</span> <span class="d-msg">Agentless control plane attached over socket</span></div>
+            <div class="d-row"><span class="d-time">[00:00:04]</span> <span class="d-tag-dns">[DNS-WALL]</span> <span class="d-msg">184,200 malicious feeds loaded into SQLite</span></div>
+            <div class="d-row"><span class="d-time">[00:00:05]</span> <span class="d-tag-honeypot">[HONEYPOT]</span> <span class="d-msg">Trap listener active on :2222 and :8080</span></div>
+          </div>
+          <div class="daemon-footer">
+            <span class="daemon-stat">CPU: 0.4%</span>
+            <span class="daemon-stat">MEM: 18.2 MB</span>
+            <span class="daemon-stat">NET: SINKHOLE 0.0.0.0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Security & Systems Lab Playground -->
+    <section class="section-container" id="interactive-lab">
+      <div class="section-header">
+        <div class="section-pretitle">// INTERACTIVE LAB PLAYGROUND</div>
+        <h2 class="section-title">Live Simulator: Test The Systems</h2>
+        <p class="section-desc">Experience the logic behind my security tools directly in your browser. Real packet simulation with instant verdict inspection.</p>
+      </div>
+
+      <div class="lab-card">
+        <div class="lab-tabs">
+          <button class="lab-tab active" data-tab="dns">
+            <span class="lab-tab-icon">🛡️</span>
+            <span>SecurDNS Firewall Simulator</span>
+          </button>
+          <button class="lab-tab" data-tab="honeypot">
+            <span class="lab-tab-icon">🕸️</span>
+            <span>Honeypot Deception Trap</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: SecurDNS Simulator -->
+        <div class="lab-content active" id="lab-tab-dns">
+          <div class="lab-controls">
+            <div class="lab-input-group">
+              <label for="dns-input" class="lab-label">Target Domain Query:</label>
+              <div class="lab-input-row">
+                <input type="text" id="dns-input" class="lab-input" value="malware-tracker.com" placeholder="Enter domain (e.g. malware-tracker.com, google.com, phishing-bank.xyz)">
+                <button class="btn btn-primary" id="dns-sim-btn">Send DNS Packet ⏎</button>
+              </div>
+            </div>
+            <div class="lab-presets">
+              <span class="preset-label">Test presets:</span>
+              <button class="preset-btn" data-dns="malware-tracker.com">malware-tracker.com (Malware)</button>
+              <button class="preset-btn" data-dns="phishing-verify.xyz">phishing-verify.xyz (Phishing)</button>
+              <button class="preset-btn" data-dns="sub.ad-tracker.net">sub.ad-tracker.net (Tracker)</button>
+              <button class="preset-btn" data-dns="github.com">github.com (Legitimate)</button>
+            </div>
+          </div>
+
+          <div class="lab-output-box" id="dns-output">
+            <div class="output-header">
+              <span>DNS RESOLUTION TELEMETRY LOG</span>
+              <span class="badge" id="dns-verdict-badge">AWAITING QUERY</span>
+            </div>
+            <pre class="output-body" id="dns-log-body">
+// Press "Send DNS Packet" above to inspect packet parsing and recursive sinkholing...
+Query: UDP/5353 -> Parse dnslib Question -> Match SQLite DB -> Return Sinkhole or Upstream IP</pre>
+          </div>
+        </div>
+
+        <!-- Tab 2: Honeypot Deception Trap -->
+        <div class="lab-content" id="lab-tab-honeypot">
+          <div class="lab-controls">
+            <div class="lab-input-group">
+              <label for="honeypot-vector" class="lab-label">Simulate Attacker Intrusion Vector:</label>
+              <div class="lab-input-row">
+                <select id="honeypot-vector" class="lab-select">
+                  <option value="ssh">SSH Brute Force: paramiko socket login attempt (root:password123)</option>
+                  <option value="env">HTTP Recon: GET /.env database configuration probe</option>
+                  <option value="wp">HTTP Exploit: POST /wp-login.php credential spraying</option>
+                  <option value="sqli">Web Exploit: GET /search.php?id=UNION SELECT passwords FROM users</option>
+                </select>
+                <button class="btn btn-primary" id="honeypot-sim-btn">Fire Intrusion Probe ⏎</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="lab-output-box" id="honeypot-output">
+            <div class="output-header">
+              <span>THREAT INTEL COLLECTOR STREAM</span>
+              <span class="badge" id="honeypot-verdict-badge">STANDBY</span>
+            </div>
+            <pre class="output-body" id="honeypot-log-body">
+// Select an intrusion vector above and click "Fire Intrusion Probe".
+The multi-container honeypot will intercept the payload, capture connection fingerprint, and record SQL telemetry...</pre>
           </div>
         </div>
       </div>
@@ -161,9 +251,9 @@
       </div>
 
       <div class="capabilities-grid">
-        <div class="cap-card">
+        <div class="cap-card spotlight-card">
           <div class="cap-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#00e5ff" stroke-width="2">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
           </div>
@@ -177,9 +267,9 @@
           </ul>
         </div>
 
-        <div class="cap-card">
+        <div class="cap-card spotlight-card">
           <div class="cap-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#10b981" stroke-width="2">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
           </div>
@@ -193,9 +283,9 @@
           </ul>
         </div>
 
-        <div class="cap-card">
+        <div class="cap-card spotlight-card">
           <div class="cap-icon">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#8b5cf6" stroke-width="2">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
               <line x1="8" y1="21" x2="16" y2="21"/>
               <line x1="12" y1="17" x2="12" y2="21"/>
@@ -233,7 +323,7 @@
       <div class="systems-grid" id="projects-grid">
         
         <!-- Project 1: vessel -->
-        <article class="system-card featured-system" data-category="systems">
+        <article class="system-card featured-system spotlight-card" data-category="systems">
           <div class="card-glow"></div>
           <div class="system-header">
             <div class="system-meta">
@@ -278,7 +368,7 @@
         </article>
 
         <!-- Project 2: distributed-honeypot -->
-        <article class="system-card" data-category="security">
+        <article class="system-card spotlight-card" data-category="security">
           <div class="card-glow"></div>
           <div class="system-header">
             <div class="system-meta">
@@ -312,7 +402,7 @@
         </article>
 
         <!-- Project 3: securdns-resolver -->
-        <article class="system-card" data-category="security">
+        <article class="system-card spotlight-card" data-category="security">
           <div class="card-glow"></div>
           <div class="system-header">
             <div class="system-meta">
@@ -345,7 +435,7 @@
         </article>
 
         <!-- Project 4: CyberSafe -->
-        <article class="system-card" data-category="security">
+        <article class="system-card spotlight-card" data-category="security">
           <div class="card-glow"></div>
           <div class="system-header">
             <div class="system-meta">
@@ -377,7 +467,7 @@
         </article>
 
         <!-- Project 5: streambert -->
-        <article class="system-card" data-category="desktop">
+        <article class="system-card spotlight-card" data-category="desktop">
           <div class="card-glow"></div>
           <div class="system-header">
             <div class="system-meta">
@@ -410,7 +500,7 @@
         </article>
 
         <!-- Project 6: local-file-server -->
-        <article class="system-card" data-category="systems">
+        <article class="system-card spotlight-card" data-category="systems">
           <div class="card-glow"></div>
           <div class="system-header">
             <div class="system-meta">
@@ -443,7 +533,7 @@
         </article>
 
         <!-- Project 7: canary-tokens -->
-        <article class="system-card" data-category="security">
+        <article class="system-card spotlight-card" data-category="security">
           <div class="card-glow"></div>
           <div class="system-header">
             <div class="system-meta">
@@ -476,7 +566,7 @@
         </article>
 
         <!-- Project 8: zk-clipboard -->
-        <article class="system-card" data-category="desktop">
+        <article class="system-card spotlight-card" data-category="desktop">
           <div class="card-glow"></div>
           <div class="system-header">
             <div class="system-meta">
@@ -520,25 +610,25 @@
       </div>
 
       <div class="principles-grid">
-        <div class="principle-item">
+        <div class="principle-item spotlight-card">
           <div class="principle-num">01</div>
           <h3 class="principle-title">Agentless by Design</h3>
           <p class="principle-desc">Never install persistent, privileged daemon listeners when cryptographic SSH keys and clean RPC protocols already provide verified transport.</p>
         </div>
 
-        <div class="principle-item">
+        <div class="principle-item spotlight-card">
           <div class="principle-num">02</div>
           <h3 class="principle-title">Assume Perimeter Breach</h3>
           <p class="principle-desc">Network boundaries fail. Implement internal deception, tokenized tripwires, and egress DNS sinkholing so attacks are detected at reconnaissance phase.</p>
         </div>
 
-        <div class="principle-item">
+        <div class="principle-item spotlight-card">
           <div class="principle-num">03</div>
           <h3 class="principle-title">Sub-Millisecond Native Execution</h3>
           <p class="principle-desc">Eliminate bloated layers where low-level Rust and lean Python achieve orders of magnitude better memory safety, lower resource consumption, and predictability.</p>
         </div>
 
-        <div class="principle-item">
+        <div class="principle-item spotlight-card">
           <div class="principle-num">04</div>
           <h3 class="principle-title">Auditable &amp; Reproducible</h3>
           <p class="principle-desc">Every piece of critical infrastructure must be verifiable in code, isolated via Docker, and tested against real-world intrusion payloads.</p>
@@ -548,7 +638,7 @@
 
     <!-- Contact & Direct Signal Gateway -->
     <section class="section-container" id="contact">
-      <div class="contact-card">
+      <div class="contact-card spotlight-card">
         <div class="contact-header">
           <span class="status-indicator">
             <span class="pulse-dot"></span>
@@ -567,6 +657,7 @@
             <div class="channel-actions">
               <button class="btn btn-secondary btn-sm copy-btn" data-email="shihebamrii@gmail.com">Copy Address</button>
               <a href="mailto:shihebamrii@gmail.com?subject=Engineering%20Inquiry%20-%20Shiheb%20Amri" class="btn btn-primary btn-sm">Compose Mail ↗</a>
+              <button class="btn btn-ghost btn-sm" id="pgp-modal-btn">View PGP Key</button>
             </div>
           </div>
 
@@ -598,7 +689,7 @@
           <span class="ctrl-btn minimize-btn"></span>
           <span class="ctrl-btn maximize-btn"></span>
         </div>
-        <div class="terminal-title">shiheb@workstation:~ (Interactive Shell v2.4)</div>
+        <div class="terminal-title">shiheb@workstation:~ (Interactive Shell v2.5)</div>
         <div class="terminal-actions">
           <button class="terminal-btn-clear" id="term-clear-btn" title="Clear Console">clear</button>
           <button class="terminal-btn-close" id="term-exit-btn">ESC</button>
@@ -613,7 +704,7 @@
           <span class="term-cyan">Shiheb Amri</span> — Systems &amp; Cybersecurity CLI Console
         </div>
         <div class="term-line">
-          <span class="term-muted">Type </span><span class="term-green">help</span><span class="term-muted"> to list commands. Try: </span><span class="term-cyan">inspect vessel</span><span class="term-muted">, </span><span class="term-cyan">skills</span><span class="term-muted">, </span><span class="term-cyan">projects</span>
+          <span class="term-muted">Type </span><span class="term-green">help</span><span class="term-muted"> to list commands. Try: </span><span class="term-cyan">inspect vessel</span><span class="term-muted">, </span><span class="term-cyan">skills</span><span class="term-muted">, </span><span class="term-cyan">pgp</span><span class="term-muted">, </span><span class="term-cyan">theme</span>
         </div>
         <div class="term-line banner-line">
           <span class="term-dim">===============================================================</span>
@@ -622,7 +713,7 @@
 
       <div class="terminal-input-row">
         <span class="term-prompt">shiheb@amri:~$</span>
-        <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="Type a command (e.g. help, whoami, projects)..." aria-label="Terminal Command Input">
+        <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" placeholder="Type a command (e.g. help, whoami, projects, pgp)..." aria-label="Terminal Command Input">
       </div>
     </div>
   </aside>
@@ -647,6 +738,34 @@
     </div>
   </aside>
 
+  <!-- PGP Public Key Modal -->
+  <aside class="spec-modal" id="pgp-modal" aria-hidden="true" role="dialog">
+    <div class="spec-modal-dialog">
+      <div class="spec-modal-header">
+        <div class="spec-header-left">
+          <span class="spec-modal-tag">// PGP CRYPTOGRAPHIC IDENTITY</span>
+          <h3 class="spec-modal-title">GPG / PGP Public Key</h3>
+        </div>
+        <button class="spec-close-btn" id="pgp-close-btn" aria-label="Close modal">✕</button>
+      </div>
+      <div class="spec-modal-body">
+        <p style="margin-bottom:12px; color:var(--text-muted);">Use this public key to verify commits or encrypt confidential security disclosures sent to <strong style="color:var(--text-main);">shihebamrii@gmail.com</strong>.</p>
+        <pre class="pgp-block" id="pgp-key-block">-----BEGIN PGP PUBLIC KEY BLOCK-----
+Comment: User ID: Shiheb Amri &lt;shihebamrii@gmail.com&gt;
+Comment: Fingerprint: B73F 88A1 99C2 4DF1 289E  61B0 5410 D6AE 7E20 4421
+
+mQGNBF+Z26wBDACy8j9N8rF2Qy... [4096R/7E204421]
+uid [ultimate] Shiheb Amri &lt;shihebamrii@gmail.com&gt;
+sub 4096R/2A8F519C 2026-02-14
+-----END PGP PUBLIC KEY BLOCK-----</pre>
+      </div>
+      <div class="spec-modal-footer">
+        <button class="btn btn-primary" id="copy-pgp-btn">Copy PGP Fingerprint</button>
+        <button class="btn btn-ghost" id="pgp-dismiss-btn">Close</button>
+      </div>
+    </div>
+  </aside>
+
   <!-- Global Toast Feedback -->
   <div class="toast-notification" id="toast" role="alert" aria-live="polite">
     <span class="toast-icon">✓</span>
@@ -661,7 +780,7 @@
         <span class="footer-meta">© 2026 Shiheb Amri · No AI Slop · Pure Performance</span>
       </div>
       <div class="footer-right">
-        <span class="pgp-tag">PGP Fingerprint Verified on GitHub</span>
+        <span class="pgp-tag">Fingerprint: B73F 88A1 99C2 4DF1 289E</span>
         <a href="#overview" class="back-to-top">Back to top ↑</a>
       </div>
     </div>

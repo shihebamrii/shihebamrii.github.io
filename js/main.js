@@ -1,9 +1,9 @@
 /* -------------------------------------------------------------
-   Shiheb Amri Portfolio — Client-Side Logic & CLI Engine
-   Aesthetic: Fast, Tactile, No Bloat, Evidence-Based
+   Shiheb Amri Portfolio — Client-Side Logic & Systems Engine
+   Aesthetic: Fast, Tactile, Evidence-Based, Zero AI Slop
    ------------------------------------------------------------- */
 
-// Project Architecture Data Cache
+// Project Architecture Specs Cache
 const PROJECT_SPECS = {
   vessel: {
     title: "vessel",
@@ -104,13 +104,76 @@ const PROJECT_SPECS = {
   }
 };
 
+/* -------------------------------------------------------------
+   Web Audio Synthesizer (Zero External Audio Files)
+   ------------------------------------------------------------- */
+class CyberAudioEngine {
+  constructor() {
+    this.enabled = false;
+    this.ctx = null;
+  }
+
+  init() {
+    if (!this.ctx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) this.ctx = new AudioCtx();
+    }
+  }
+
+  playKey() {
+    if (!this.enabled || !this.ctx) return;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(580 + Math.random() * 80, this.ctx.currentTime);
+      gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.05);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.05);
+    } catch (e) {}
+  }
+
+  playBeep(success = true) {
+    if (!this.enabled || !this.ctx) return;
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(success ? 880 : 320, this.ctx.currentTime);
+      if (success) {
+        osc.frequency.exponentialRampToValueAtTime(1320, this.ctx.currentTime + 0.1);
+      }
+      gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.12);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.12);
+    } catch (e) {}
+  }
+}
+
+const audio = new CyberAudioEngine();
+
+/* -------------------------------------------------------------
+   Application Bootstrap
+   ------------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
   initAmbientCanvas();
   initTelemetrySimulator();
+  initAudioToggle();
+  initThemePicker();
+  initDaemonStream();
+  initSpotlightTracking();
+  initInteractiveLab();
   initClipboardButtons();
   initProjectFilters();
   initTerminal();
   initSpecModal();
+  initPgpModal();
 });
 
 /* -------------------------------------------------------------
@@ -164,7 +227,6 @@ function initAmbientCanvas() {
       ctx.fillStyle = "rgba(0, 229, 255, 0.4)";
       ctx.fill();
 
-      // Connect nearby nodes
       for (let j = i + 1; j < nodes.length; j++) {
         const n2 = nodes[j];
         const dist = Math.hypot(n.x - n2.x, n.y - n2.y);
@@ -178,7 +240,6 @@ function initAmbientCanvas() {
         }
       }
 
-      // Connect to mouse
       const mouseDist = Math.hypot(n.x - mouse.x, n.y - mouse.y);
       if (mouseDist < 120) {
         ctx.beginPath();
@@ -197,6 +258,217 @@ function initAmbientCanvas() {
 }
 
 /* -------------------------------------------------------------
+   Audio Feedback Toggle
+   ------------------------------------------------------------- */
+function initAudioToggle() {
+  const btn = document.getElementById("audio-toggle-btn");
+  const icon = document.getElementById("audio-icon");
+  const label = document.getElementById("audio-label");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    audio.init();
+    audio.enabled = !audio.enabled;
+
+    if (audio.enabled) {
+      btn.classList.add("active");
+      icon.textContent = "🔊";
+      label.textContent = "FX: ON";
+      audio.playBeep(true);
+      showToast("Tactile audio feedback enabled");
+    } else {
+      btn.classList.remove("active");
+      icon.textContent = "🔇";
+      label.textContent = "FX: OFF";
+    }
+  });
+}
+
+/* -------------------------------------------------------------
+   Theme Accent Switcher
+   ------------------------------------------------------------- */
+function initThemePicker() {
+  const dots = document.querySelectorAll(".theme-dot");
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      dots.forEach((d) => d.classList.remove("active"));
+      dot.classList.add("active");
+      const theme = dot.getAttribute("data-theme") || "cyan";
+      document.documentElement.setAttribute("data-accent", theme);
+      audio.playKey();
+    });
+  });
+}
+
+/* -------------------------------------------------------------
+   Spotlight Card Mouse Physics
+   ------------------------------------------------------------- */
+function initSpotlightTracking() {
+  const cards = document.querySelectorAll(".spotlight-card");
+  cards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty("--spotlight-x", `${x}px`);
+      card.style.setProperty("--spotlight-y", `${y}px`);
+    });
+  });
+}
+
+/* -------------------------------------------------------------
+   Hero Live Daemon Stream Simulator
+   ------------------------------------------------------------- */
+function initDaemonStream() {
+  const stream = document.getElementById("daemon-stream");
+  if (!stream) return;
+
+  const mockLogs = [
+    { tag: "sys", prefix: "[SEC-AUDIT]", text: "Checking /etc/shadow permissions: 0640 [OK]" },
+    { tag: "dns", prefix: "[DNS-FILTER]", text: "Intercepted adservice.google.com -> SINKHOLED 0.0.0.0 (0.4ms)" },
+    { tag: "sec", prefix: "[DECEPTION]", text: "Canary token planted: /var/backup/.aws_credentials.bak" },
+    { tag: "app", prefix: "[VESSEL-RPC]", text: "Streamed docker ps stats over SSH socket (24 containers)" },
+    { tag: "honeypot", prefix: "[INTRUSION]", text: "Blocked scanner from 185.220.101.4 trying 'admin:admin' on :2222" },
+    { tag: "dns", prefix: "[DNS-FILTER]", text: "Query 'api.github.com' -> UPSTREAM 1.1.1.1 -> 140.82.121.6" }
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    const item = mockLogs[index % mockLogs.length];
+    index++;
+
+    const now = new Date();
+    const timeStr = `[${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}]`;
+
+    const row = document.createElement("div");
+    row.className = "d-row";
+    row.innerHTML = `<span class="d-time">${timeStr}</span> <span class="d-tag-${item.tag}">${item.prefix}</span> <span class="d-msg">${item.text}</span>`;
+
+    stream.appendChild(row);
+    if (stream.children.length > 25) {
+      stream.removeChild(stream.children[0]);
+    }
+    stream.scrollTop = stream.scrollHeight;
+  }, 4500);
+}
+
+/* -------------------------------------------------------------
+   Interactive Security Lab Simulator
+   ------------------------------------------------------------- */
+function initInteractiveLab() {
+  // Tabs
+  const tabs = document.querySelectorAll(".lab-tab");
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+      const target = tab.getAttribute("data-tab");
+
+      document.getElementById("lab-tab-dns").classList.toggle("active", target === "dns");
+      document.getElementById("lab-tab-honeypot").classList.toggle("active", target === "honeypot");
+      audio.playKey();
+    });
+  });
+
+  // Presets
+  const presets = document.querySelectorAll(".preset-btn");
+  const dnsInput = document.getElementById("dns-input");
+  presets.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      dnsInput.value = btn.getAttribute("data-dns") || "";
+      audio.playKey();
+    });
+  });
+
+  // DNS Simulation Trigger
+  const dnsSimBtn = document.getElementById("dns-sim-btn");
+  const dnsLog = document.getElementById("dns-log-body");
+  const dnsBadge = document.getElementById("dns-verdict-badge");
+
+  if (dnsSimBtn) {
+    dnsSimBtn.addEventListener("click", () => {
+      audio.playKey();
+      const domain = (dnsInput.value || "").trim().toLowerCase();
+      if (!domain) return;
+
+      dnsLog.textContent = `[+] Inspecting incoming UDP packet for: "${domain}"...
+[+] Parsing Question Section via dnslib (Type: A, Class: IN)...`;
+
+      setTimeout(() => {
+        const isMalicious = domain.includes("malware") || domain.includes("phish") || domain.includes("track") || domain.includes("ad-");
+
+        if (isMalicious) {
+          dnsBadge.textContent = "VERDICT: SINKHOLED (0.0.0.0)";
+          dnsBadge.style.color = "#ef4444";
+          dnsBadge.style.borderColor = "#ef4444";
+          audio.playBeep(false);
+
+          dnsLog.textContent = `[+] Query: "${domain}"
+[+] Match found in local blocklist database (Parent domain wildcard: *.${domain.split('.').slice(-2).join('.')})
+[!] THREAT DETECTED: Phishing / Malware / Tracker Feed Rule
+[✓] ACTION: Sinkholed to 0.0.0.0
+[✓] Logged to SQLite threat database in 0.72ms
+[✓] Client packet reply: IP 0.0.0.0 (TTL: 300)`;
+        } else {
+          dnsBadge.textContent = "VERDICT: ALLOWED (UPSTREAM)";
+          dnsBadge.style.color = "#10b981";
+          dnsBadge.style.borderColor = "#10b981";
+          audio.playBeep(true);
+
+          dnsLog.textContent = `[+] Query: "${domain}"
+[+] No malicious signatures found in 184,200 local blocklist records.
+[+] Forwarded UDP packet to Upstream DNS (Cloudflare 1.1.1.1:53)
+[✓] Upstream Response: 140.82.121.4 (Latency: 14ms)
+[✓] Cached in SQLite query_logs with status: ALLOWED`;
+        }
+      }, 350);
+    });
+  }
+
+  // Honeypot Simulation Trigger
+  const honeyBtn = document.getElementById("honeypot-sim-btn");
+  const honeyLog = document.getElementById("honeypot-log-body");
+  const honeyBadge = document.getElementById("honeypot-verdict-badge");
+  const honeySelect = document.getElementById("honeypot-vector");
+
+  if (honeyBtn) {
+    honeyBtn.addEventListener("click", () => {
+      audio.playKey();
+      const vector = honeySelect.value;
+      honeyLog.textContent = `[+] Firing intrusion simulation payload [vector: ${vector}]...`;
+
+      setTimeout(() => {
+        honeyBadge.textContent = "TRAP TRIGGERED (CAPTURED)";
+        honeyBadge.style.color = "#10b981";
+        honeyBadge.style.borderColor = "#10b981";
+        audio.playBeep(true);
+
+        if (vector === "ssh") {
+          honeyLog.textContent = `[+] Target: ssh-honeypot-node:2222
+[+] Handshake: Client SSH-2.0-OpenSSH_8.9p1
+[+] Intercepted credentials: Username="root", Password="password123"
+[!] TRAP: Paramiko hook captured attacker session and source IP
+[✓] Telemetry payload POSTed to Flask collector API (/api/report/ssh)
+[✓] Written to threat_intel.db (ID: 4192). Live CLI dashboard updated.`;
+        } else if (vector === "env") {
+          honeyLog.textContent = `[+] Target: http-honeypot-node:8080/GET /.env
+[+] Mock Template: Returned synthetic DB credentials (DB_PASS=decoy_token_9918)
+[!] CANARY TRIGGERED: Reconnaissance probe detected!
+[✓] Captured attacker User-Agent: "sqlmap/1.6.4#stable"
+[✓] Telemetry payload POSTed to Flask collector API (/api/report/http)`;
+        } else {
+          honeyLog.textContent = `[+] Target: http-honeypot-node:8080 (Web Exploit / Injection)
+[+] Intercepted URI: /search.php?id=UNION SELECT passwords FROM users
+[!] Payload identified: SQL Injection signature (OWASP A03:2021)
+[✓] Honeypot returned decoy 200 OK template with synthetic hashes
+[✓] Attacker source fingerprint permanently registered in threat intelligence log.`;
+        }
+      }, 400);
+    });
+  }
+}
+
+/* -------------------------------------------------------------
    Telemetry Simulator
    ------------------------------------------------------------- */
 function initTelemetrySimulator() {
@@ -204,7 +476,7 @@ function initTelemetrySimulator() {
   if (!pingEl) return;
 
   setInterval(() => {
-    const rtt = Math.floor(Math.random() * 8) + 16; // 16 - 24ms
+    const rtt = Math.floor(Math.random() * 8) + 16;
     pingEl.textContent = `RTT: ${rtt}ms`;
   }, 4000);
 }
@@ -230,9 +502,11 @@ function initClipboardButtons() {
   const copyButtons = document.querySelectorAll("[data-email]");
   copyButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
+      audio.playKey();
       const email = btn.getAttribute("data-email") || "shihebamrii@gmail.com";
       navigator.clipboard.writeText(email).then(() => {
         showToast(`Copied ${email} to clipboard!`);
+        audio.playBeep(true);
         const label = btn.querySelector("#copy-email-text");
         if (label) {
           const oldText = label.textContent;
@@ -257,6 +531,7 @@ function initProjectFilters() {
 
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
+      audio.playKey();
       filterBtns.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
 
@@ -288,12 +563,14 @@ function initTerminal() {
   const output = document.getElementById("terminal-output");
 
   function openTerminal() {
+    audio.playKey();
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
     input.focus();
   }
 
   function closeTerminal() {
+    audio.playKey();
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
   }
@@ -303,7 +580,6 @@ function initTerminal() {
   if (closeBtn) closeBtn.addEventListener("click", closeTerminal);
   if (exitBtn) exitBtn.addEventListener("click", closeTerminal);
 
-  // Keyboard shortcut Ctrl+K / Cmd+K / ESC
   window.addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
@@ -317,13 +593,13 @@ function initTerminal() {
     }
   });
 
-  // Modal backdrop click
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeTerminal();
   });
 
   if (clearBtn) {
     clearBtn.addEventListener("click", () => {
+      audio.playKey();
       output.innerHTML = "";
     });
   }
@@ -336,8 +612,8 @@ function initTerminal() {
     output.scrollTop = output.scrollHeight;
   }
 
-  // Shell Command Execution
   input.addEventListener("keydown", (e) => {
+    audio.playKey();
     if (e.key === "Enter") {
       const rawCmd = input.value.trim();
       input.value = "";
@@ -354,9 +630,11 @@ function initTerminal() {
           printLine(`
             <span class="term-cyan">Available Commands:</span><br>
             &nbsp;&nbsp;<span class="term-green">about</span>          - Who I am and engineering philosophy<br>
-            &nbsp;&nbsp;<span class="term-green">projects</span>       - List of public security & systems projects<br>
+            &nbsp;&nbsp;<span class="term-green">projects</span>       - List of public security &amp; systems projects<br>
             &nbsp;&nbsp;<span class="term-green">skills</span>         - Technical capabilities breakdown<br>
             &nbsp;&nbsp;<span class="term-green">inspect &lt;id&gt;</span>   - Deep dive (e.g. inspect vessel, inspect honeypot)<br>
+            &nbsp;&nbsp;<span class="term-green">pgp</span>            - Dumps PGP cryptographic identity<br>
+            &nbsp;&nbsp;<span class="term-green">theme</span>          - Cycle accent color theme<br>
             &nbsp;&nbsp;<span class="term-green">whoami</span>         - Active security role context<br>
             &nbsp;&nbsp;<span class="term-green">contact</span>        - Reach out via verified channels<br>
             &nbsp;&nbsp;<span class="term-green">ping</span>           - Network latency check<br>
@@ -381,10 +659,10 @@ function initTerminal() {
             • <span class="term-green">vessel</span> — Local-first, agentless VPS control plane (Rust/Tauri/SolidJS)<br>
             • <span class="term-green">distributed-honeypot</span> — Multi-container threat intel network (Python/Docker)<br>
             • <span class="term-green">securdns-resolver</span> — DNS firewall sinkholing malware to 0.0.0.0<br>
-            • <span class="term-green">CyberSafe</span> — Workstation threat scanner & security audit tool<br>
+            • <span class="term-green">CyberSafe</span> — Workstation threat scanner &amp; security audit tool<br>
             • <span class="term-green">streambert</span> — Electron desktop streaming player with zero tracking<br>
             • <span class="term-green">local-file-server</span> — LAN-secured authenticated file server<br>
-            • <span class="term-green">canary-tokens</span> — Deception alert tokens & intrusion tripwires<br>
+            • <span class="term-green">canary-tokens</span> — Deception alert tokens &amp; intrusion tripwires<br>
             • <span class="term-green">zk-clipboard</span> — Zero-knowledge client-side encrypted clipboard<br>
             <span class="term-muted">Tip: Type </span><span class="term-cyan">inspect vessel</span><span class="term-muted"> to view architecture specs.</span>
           `);
@@ -414,7 +692,7 @@ function initTerminal() {
                 ${spec.solution}<br><br>
                 <span class="term-green">Key Specifications:</span><br>
                 ${spec.specs.map(s => `• <span class="term-cyan">${s.label}:</span> ${s.value}`).join("<br>")}<br><br>
-                <span class="term-muted">Repository:</span> <a href="${spec.github}" target="_blank" style="color:var(--accent-cyan);">${spec.github}</a>
+                <span class="term-muted">Repository:</span> <a href="${spec.github}" target="_blank" style="color:var(--accent-primary);">${spec.github}</a>
               `);
             } else {
               printLine(`<span class="term-red">Unknown system artifact '${escapeHtml(arg)}'. Type 'projects' to see list.</span>`);
@@ -422,12 +700,31 @@ function initTerminal() {
           }
           break;
 
+        case "pgp":
+          printLine(`
+            <span class="term-cyan">PGP Fingerprint:</span> B73F 88A1 99C2 4DF1 289E 61B0 5410 D6AE 7E20 4421<br>
+            User ID: Shiheb Amri &lt;shihebamrii@gmail.com&gt;<br>
+            <span class="term-muted">Use button in Contact section to view full armored block.</span>
+          `);
+          break;
+
+        case "theme":
+          const themes = ["cyan", "emerald", "violet", "amber"];
+          const current = document.documentElement.getAttribute("data-accent") || "cyan";
+          const next = themes[(themes.indexOf(current) + 1) % themes.length];
+          document.documentElement.setAttribute("data-accent", next);
+          document.querySelectorAll(".theme-dot").forEach(d => {
+            d.classList.toggle("active", d.getAttribute("data-theme") === next);
+          });
+          printLine(`<span class="term-green">Accent theme switched to: ${next.toUpperCase()}</span>`);
+          break;
+
         case "contact":
           printLine(`
             <span class="term-cyan">Direct Communication Gateway:</span><br>
             • Email: <span class="term-green">shihebamrii@gmail.com</span><br>
-            • GitHub: <a href="https://github.com/shihebamrii" target="_blank" style="color:var(--accent-cyan);">github.com/shihebamrii</a><br>
-            • LinkedIn: <a href="https://linkedin.com/in/shihebamri" target="_blank" style="color:var(--accent-cyan);">linkedin.com/in/shihebamri</a>
+            • GitHub: <a href="https://github.com/shihebamrii" target="_blank" style="color:var(--accent-primary);">github.com/shihebamrii</a><br>
+            • LinkedIn: <a href="https://linkedin.com/in/shihebamri" target="_blank" style="color:var(--accent-primary);">linkedin.com/in/shihebamri</a>
           `);
           break;
 
@@ -469,6 +766,7 @@ function initSpecModal() {
   const triggers = document.querySelectorAll(".spec-trigger-btn");
 
   function openSpec(projectKey) {
+    audio.playKey();
     const data = PROJECT_SPECS[projectKey];
     if (!data) return;
 
@@ -504,6 +802,7 @@ function initSpecModal() {
   }
 
   function closeSpec() {
+    audio.playKey();
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
   }
@@ -527,6 +826,48 @@ function initSpecModal() {
       closeSpec();
     }
   });
+}
+
+/* -------------------------------------------------------------
+   PGP Key Modal
+   ------------------------------------------------------------- */
+function initPgpModal() {
+  const modal = document.getElementById("pgp-modal");
+  const openBtn = document.getElementById("pgp-modal-btn");
+  const closeBtn = document.getElementById("pgp-close-btn");
+  const dismissBtn = document.getElementById("pgp-dismiss-btn");
+  const copyBtn = document.getElementById("copy-pgp-btn");
+
+  if (!modal) return;
+
+  function openPgp() {
+    audio.playKey();
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+  }
+
+  function closePgp() {
+    audio.playKey();
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  if (openBtn) openBtn.addEventListener("click", openPgp);
+  if (closeBtn) closeBtn.addEventListener("click", closePgp);
+  if (dismissBtn) dismissBtn.addEventListener("click", closePgp);
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closePgp();
+  });
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText("B73F 88A1 99C2 4DF1 289E 61B0 5410 D6AE 7E20 4421").then(() => {
+        showToast("PGP Fingerprint copied!");
+        audio.playBeep(true);
+      });
+    });
+  }
 }
 
 // Security Escape Helper
