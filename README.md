@@ -1,6 +1,6 @@
 # Shiheb Amri — Portfolio & Systems Showcase
 
-> High-performance developer & cybersecurity portfolio hosted on GitHub Pages: [shihebamrii.github.io](https://shihebamrii.github.io/)
+> High-performance developer & cybersecurity portfolio: [shiheb.is-a.dev](https://shiheb.is-a.dev/)
 
 ## Overview
 - **Aesthetic**: Minimal Dark / Systems Security (Zero AI slop, high-signal technical credibility).
@@ -14,4 +14,4 @@
   - One-click contact copy with toast confirmation.
 
 ## Deployment
-Automated via GitHub Pages on `https://shihebamrii.github.io/`.
+Automated via GitHub Pages on `https://shiheb.is-a.dev/`.

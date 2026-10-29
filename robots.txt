@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shihebamrii.github.io/sitemap.xml
+Sitemap: https://shiheb.is-a.dev/sitemap.xml
