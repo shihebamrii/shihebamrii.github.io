@@ -1504,7 +1504,7 @@ body {
 }
 
 /* -------------------------------------------------------------
-   Responsive Breakpoints
+   Responsive Breakpoints & Mobile Optimization
    ------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .hero-content {
@@ -1520,27 +1520,266 @@ body {
 }
 
 @media (max-width: 768px) {
-  .telemetry-stat, .telemetry-divider {
+  html, body {
+    overflow-x: hidden;
+  }
+
+  .page-container {
+    padding: 24px 16px 60px;
+  }
+
+  .section-container {
+    margin-top: 64px;
+  }
+
+  /* Telemetry Bar */
+  .telemetry-bar {
+    padding: 8px 0;
+  }
+
+  .telemetry-inner {
+    padding: 0 14px;
+    font-size: 11px;
+  }
+
+  .telemetry-stat,
+  .telemetry-divider {
     display: none;
   }
+
+  .telemetry-link span,
+  .terminal-trigger-btn .kbd-badge,
+  .terminal-trigger-btn .terminal-label {
+    display: none;
+  }
+
+  .terminal-trigger-btn {
+    padding: 6px 10px;
+  }
+
+  .terminal-trigger-btn .terminal-icon {
+    font-size: 13px;
+  }
+
+  /* Hero Section */
   .hero-name {
     font-size: 32px;
   }
+
+  .hero-badge {
+    font-size: 11px;
+    padding: 5px 12px;
+    line-height: 1.4;
+  }
+
+  .daemon-body {
+    height: 190px;
+    font-size: 11px;
+  }
+
+  .daemon-title {
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Lab Simulator */
+  .lab-input-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lab-input,
+  .lab-select {
+    width: 100%;
+    font-size: 16px; /* Prevents auto-zoom in iOS Safari */
+  }
+
+  #dns-sim-btn,
+  #honeypot-sim-btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .lab-tabs {
+    flex-direction: column;
+  }
+
+  .lab-tab {
+    border-bottom: none;
+    border-left: 2px solid transparent;
+    padding: 12px 16px;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  .lab-tab.active {
+    border-left-color: var(--accent-primary);
+    background: rgba(0, 229, 255, 0.05);
+  }
+
+  /* Grids */
   .systems-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
+
+  .system-card {
+    padding: 20px;
+  }
+
   .principles-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
+
   .contact-channels {
     grid-template-columns: 1fr;
   }
+
+  /* Modals on Mobile */
+  .terminal-modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .terminal-container {
+    width: 100%;
+    max-width: 100%;
+    height: 85vh;
+    height: 85dvh;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .terminal-input {
+    font-size: 16px; /* Prevents auto-zoom in iOS Safari */
+  }
+
+  .spec-modal {
+    padding: 10px;
+    align-items: flex-end;
+  }
+
+  .spec-modal-dialog {
+    width: 100%;
+    max-height: 90vh;
+    max-height: 90dvh;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .spec-modal-header {
+    padding: 16px;
+  }
+
+  .spec-modal-body {
+    padding: 16px;
+    font-size: 13px;
+  }
+
+  .spec-modal-footer {
+    padding: 12px 16px;
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .spec-modal-footer .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  /* Footer */
   .footer-inner {
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     text-align: center;
   }
-  .terminal-container {
-    height: 80vh;
+
+  .footer-nav {
+    gap: 10px;
+  }
+
+  .toast-notification {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Small Smartphone Devices (<= 480px) */
+@media (max-width: 480px) {
+  .hero-header-row {
+    gap: 14px;
+  }
+
+  .hero-avatar-wrapper {
+    width: 64px;
+    height: 64px;
+  }
+
+  .hero-name {
+    font-size: 26px;
+  }
+
+  .hero-role-tag {
+    font-size: 12px;
+  }
+
+  .hero-aliases {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .filter-bar {
+    gap: 6px;
+  }
+
+  .filter-btn {
+    font-size: 11px;
+    padding: 6px 12px;
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .system-footer {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .system-footer .spec-trigger-btn,
+  .system-footer .system-ext-link {
+    text-align: center;
+    padding: 6px 0;
+  }
+
+  .channel-actions {
+    flex-direction: column;
+  }
+
+  .channel-actions .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .section-title {
+    font-size: 22px;
   }
 }
