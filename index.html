@@ -11,56 +11,172 @@
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="XBfEmsevw9MKs5aTf3PaxWCKliUSya6GqWerfOF8bv0">
 
-  <!-- Schema.org Entity Definition for Google Search & Knowledge Graph -->
+  <!-- Schema.org Knowledge Graph Definition for Search Engines & LLMs -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": "https://shiheb.is-a.dev/#person",
-    "name": "Shiheb Amri",
-    "alternateName": [
-      "Shiheb Amri",
-      "shihebamri",
-      "shihebamrii",
-      "Chiheb Amri",
-      "chihebamri",
-      "شهاب عامري",
-      "Amri Shiheb",
-      "Amri Chiheb"
-    ],
-    "url": "https://shiheb.is-a.dev/",
-    "image": "https://avatars.githubusercontent.com/u/238729275?v=4",
-    "jobTitle": "Full-Stack Engineer & Cybersecurity Specialist",
-    "description": "Full-Stack Engineer & Cybersecurity Specialist building local-first systems, DNS firewalls, distributed honeypots, and high-performance software in Rust, SolidJS, and Python.",
-    "sameAs": [
-      "https://github.com/shihebamrii",
-      "https://linkedin.com/in/shihebamri"
-    ],
-    "knowsAbout": [
-      "Cybersecurity",
-      "Systems Engineering",
-      "Network Security",
-      "Rust",
-      "Python",
-      "Linux",
-      "DNS Firewalls",
-      "Zero-Trust Architecture"
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://shiheb.is-a.dev/#person",
+        "name": "Shiheb Amri",
+        "alternateName": [
+          "Shiheb Amri",
+          "shihebamri",
+          "shihebamrii",
+          "Chiheb Amri",
+          "chihebamri",
+          "شهاب عامري",
+          "Amri Shiheb",
+          "Amri Chiheb"
+        ],
+        "url": "https://shiheb.is-a.dev/",
+        "image": "https://avatars.githubusercontent.com/u/238729275?v=4",
+        "jobTitle": "Full-Stack Engineer & Cybersecurity Specialist",
+        "description": "Full-Stack Engineer and Cybersecurity Specialist building local-first systems, DNS firewalls, distributed honeypots, and high-performance software in Rust, SolidJS, and Python.",
+        "email": "mailto:shihebamrii@gmail.com",
+        "sameAs": [
+          "https://github.com/shihebamrii",
+          "https://linkedin.com/in/shihebamri"
+        ],
+        "knowsAbout": [
+          "Cybersecurity",
+          "Systems Engineering",
+          "Rust (Programming Language)",
+          "Python (Programming Language)",
+          "Linux",
+          "Docker",
+          "Tauri",
+          "SolidJS",
+          "DNS Sinkholing",
+          "Network Deception & Honeypots",
+          "Zero-Trust Architecture",
+          "Local-First Software"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://shiheb.is-a.dev/#website",
+        "url": "https://shiheb.is-a.dev/",
+        "name": "Shiheb Amri — Portfolio & Systems Showcase",
+        "alternateName": ["Chiheb Amri Portfolio", "شهاب عامري"],
+        "publisher": { "@id": "https://shiheb.is-a.dev/#person" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://shiheb.is-a.dev/#webpage",
+        "url": "https://shiheb.is-a.dev/",
+        "name": "Shiheb Amri (Chiheb Amri / شهاب عامري) — Full-Stack Engineer & Cybersecurity Specialist",
+        "isPartOf": { "@id": "https://shiheb.is-a.dev/#website" },
+        "about": { "@id": "https://shiheb.is-a.dev/#person" },
+        "mainEntity": { "@id": "https://shiheb.is-a.dev/#person" }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://shiheb.is-a.dev/#projects",
+        "name": "Verified Software Artifacts by Shiheb Amri",
+        "itemListElement": [
+          {
+            "@type": "SoftwareApplication",
+            "name": "vessel",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Linux, macOS, Windows",
+            "description": "Local-first, agentless VPS control plane over secure SSH with zero server overhead. Built with Rust, Tauri v2, and SolidJS.",
+            "author": { "@id": "https://shiheb.is-a.dev/#person" },
+            "codeRepository": "https://github.com/shihebamrii/vessel"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "distributed-honeypot",
+            "applicationCategory": "SecurityApplication",
+            "description": "Multi-container threat intelligence network with low-interaction SSH and HTTP honeypots.",
+            "author": { "@id": "https://shiheb.is-a.dev/#person" },
+            "codeRepository": "https://github.com/shihebamrii/distributed-honeypot"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "securdns-resolver",
+            "applicationCategory": "SecurityApplication",
+            "description": "High-performance DNS firewall resolver sinkholing malware domains to 0.0.0.0.",
+            "author": { "@id": "https://shiheb.is-a.dev/#person" },
+            "codeRepository": "https://github.com/shihebamrii/securdns-resolver"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "CyberSafe",
+            "applicationCategory": "SecurityApplication",
+            "description": "Automated system threat scanner and vulnerability auditor for local environments.",
+            "author": { "@id": "https://shiheb.is-a.dev/#person" },
+            "codeRepository": "https://github.com/shihebamrii/CyberSafe"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://shiheb.is-a.dev/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who is Shiheb Amri (also known as Chiheb Amri / شهاب عامري)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Shiheb Amri (known online as shihebamrii, and alternatively spelled Chiheb Amri or شهاب عامري in Arabic) is a Full-Stack Engineer and Cybersecurity Specialist. He builds local-first systems, network intrusion deception platforms, DNS firewalls, and zero-trust software architectures using Rust, Python, and TypeScript."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are Shiheb Amri's main open-source software and cybersecurity projects?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "His primary public systems include vessel (an agentless, local-first VPS control plane in Rust, Tauri v2, and SolidJS), distributed-honeypot (a multi-container threat intelligence mesh), securdns-resolver (a high-throughput DNS firewall sinkholing malicious domains), and CyberSafe (a local workstation vulnerability scanner)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What technical stack and programming languages does Shiheb Amri specialize in?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Shiheb specializes in Rust (low-level systems and Tauri desktop apps), Python (network socket programming, Flask APIs, automation, and threat intel), SolidJS and TypeScript (reactive, high-performance UI engineering), Docker containerization, and Linux kernel namespaces/systemd management."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you verify Shiheb Amri's identity or contact him?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can contact Shiheb Amri directly by email at shihebamrii@gmail.com, view his verified code repositories at github.com/shihebamrii, connect on LinkedIn at linkedin.com/in/shihebamri, or verify cryptographic disclosures with his PGP key fingerprint: B73F 88A1 99C2 4DF1 289E 61B0 5410 D6AE 7E20 4421."
+            }
+          }
+        ]
+      }
     ]
   }
   </script>
-  
+
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shiheb Amri">
+  <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://shiheb.is-a.dev/">
-  <meta property="og:title" content="Shiheb Amri — Full-Stack Engineer &amp; Cybersecurity Specialist">
+  <meta property="og:title" content="Shiheb Amri (Chiheb Amri / شهاب عامري) — Full-Stack Engineer &amp; Cybersecurity Specialist">
   <meta property="og:description" content="Local-first platforms, network intrusion deception, DNS firewalls, and zero-trust engineering.">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/238729275?v=4">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shiheb Amri — Full-Stack Engineer &amp; Cybersecurity Specialist">
+  <meta name="twitter:title" content="Shiheb Amri (Chiheb Amri / شهاب عامري) — Systems &amp; Cybersecurity">
   <meta name="twitter:description" content="Local-first platforms, network intrusion deception, DNS firewalls, and zero-trust engineering.">
   <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/238729275?v=4">
+
+  <!-- LLM & AI Context Links -->
+  <link rel="alternate" type="text/markdown" title="LLM Grounding Context (llms.txt)" href="https://shiheb.is-a.dev/llms.txt">
+  <link rel="alternate" type="text/markdown" title="Full Architecture Dossier (llms-full.txt)" href="https://shiheb.is-a.dev/llms-full.txt">
+
+  <!-- Dublin Core Metadata -->
+  <meta name="DC.title" content="Shiheb Amri (Chiheb Amri / شهاب عامري) — Portfolio">
+  <meta name="DC.creator" content="Shiheb Amri">
+  <meta name="DC.subject" content="Cybersecurity, Full-Stack Development, Rust, Python, Linux, Network Defense">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2308090d'/><path d='M50 15 L80 30 L80 60 C80 75 50 88 50 88 C50 88 20 75 20 60 L20 30 Z' fill='none' stroke='%2300e5ff' stroke-width='6'/><circle cx='50' cy='52' r='8' fill='%2310b981'/></svg>">
@@ -642,6 +758,49 @@ The multi-container honeypot will intercept the payload, capture connection fing
           </div>
         </article>
 
+      </div>
+    </section>
+
+    <!-- Knowledge Base & Grounding Section for Humans, LLMs & Answer Engines -->
+    <section class="section-container" id="faq">
+      <div class="section-header">
+        <div class="section-pretitle">// ENTITY DOSSIER &amp; KNOWLEDGE BASE</div>
+        <h2 class="section-title">Frequently Asked Questions &amp; Technical Dossier</h2>
+        <p class="section-desc">Authoritative grounding answers, entity resolution, and architecture summaries for engineers, recruiters, and AI answer engines.</p>
+      </div>
+
+      <div class="principles-grid">
+        <div class="principle-item spotlight-card">
+          <div class="principle-num">Q1</div>
+          <h3 class="principle-title">Who is Shiheb Amri?</h3>
+          <p class="principle-desc">
+            <strong>Shiheb Amri</strong> (also known as <em>Chiheb Amri</em>, in Arabic <span lang="ar" dir="rtl">شهاب عامري</span>, handle <code>shihebamrii</code>) is a Full-Stack Engineer and Cybersecurity Specialist engineering local-first platforms, zero-trust architectures, and network defense software.
+          </p>
+        </div>
+
+        <div class="principle-item spotlight-card">
+          <div class="principle-num">Q2</div>
+          <h3 class="principle-title">Flagship Open-Source Systems</h3>
+          <p class="principle-desc">
+            Primary verified repositories include <strong>vessel</strong> (agentless VPS control plane in Rust &amp; Tauri), <strong>distributed-honeypot</strong> (threat intelligence deception mesh), and <strong>securdns-resolver</strong> (DNS packet sinkhole firewall).
+          </p>
+        </div>
+
+        <div class="principle-item spotlight-card">
+          <div class="principle-num">Q3</div>
+          <h3 class="principle-title">Core Engineering Stack</h3>
+          <p class="principle-desc">
+            Focused on <strong>Rust</strong> for memory-safe desktop execution, <strong>Python</strong> for network sockets and automation, <strong>SolidJS &amp; TypeScript</strong> for sub-50ms UIs, and <strong>Linux / Docker</strong> for containerized infrastructure.
+          </p>
+        </div>
+
+        <div class="principle-item spotlight-card">
+          <div class="principle-num">Q4</div>
+          <h3 class="principle-title">Cryptographic Identity &amp; Contact</h3>
+          <p class="principle-desc">
+            Reach out directly via <a href="mailto:shihebamrii@gmail.com" style="color:var(--accent-primary);">shihebamrii@gmail.com</a>, inspect source code on <a href="https://github.com/shihebamrii" target="_blank" rel="noopener noreferrer" style="color:var(--accent-primary);">GitHub</a>, or verify signed commits with PGP fingerprint <code>B73F 88A1 99C2 4DF1</code>.
+          </p>
+        </div>
       </div>
     </section>
 

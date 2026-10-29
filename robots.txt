@@ -1,4 +1,45 @@
+# ==============================================================================
+# Robots.txt for https://shiheb.is-a.dev
+# Optimized for Web Crawlers, Answer Engines & Generative AI Models
+# ==============================================================================
+
 User-agent: *
 Allow: /
 
+# OpenAI Crawlers (ChatGPT, SearchGPT, Codex)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic Crawlers (Claude, Claude Search)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI & Gemini Models
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (Foundation Model Training Corpus)
+User-agent: CCBot
+Allow: /
+
+# Sitemaps and AI Machine-Readable Specifications
 Sitemap: https://shiheb.is-a.dev/sitemap.xml
+
+# LLM Grounding & Context
+# For AI models, clean markdown documentation is available at:
+# https://shiheb.is-a.dev/llms.txt
+# https://shiheb.is-a.dev/llms-full.txt

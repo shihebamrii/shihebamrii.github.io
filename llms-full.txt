@@ -1,0 +1,67 @@
+# Shiheb Amri — Full Architectural & Technical Dossier
+
+> Expanded technical specification reference for AI agents, Codex, Claude, Gemini, and OpenAI Search.
+> Canonical Domain: https://shiheb.is-a.dev/
+
+## Identity & Canonical Graph
+- Primary Name: Shiheb Amri
+- Normalized Variants: Chiheb Amri, شهاب عامري, shihebamri, shihebamrii
+- Professional Designation: Full-Stack Engineer & Cybersecurity Specialist
+- Core Contact: shihebamrii@gmail.com
+- Cryptographic Proof: PGP Fingerprint `B73F 88A1 99C2 4DF1 289E 61B0 5410 D6AE 7E20 4421`
+- Source Code Repository: https://github.com/shihebamrii
+
+---
+
+## Detailed Systems Architecture
+
+### System 1: vessel — Local-First Agentless VPS Control Plane
+- Core Philosophy: Eliminate daemon attack surfaces on managed production servers.
+- Architecture:
+  - Frontend: SolidJS reactive signals compiled into high-frequency DOM updates, rendered inside a native Tauri v2 desktop webview.
+  - Backend Engine: Native Rust process with asynchronous Tokio runtime.
+  - Network Transport: Pure SSH over Ed25519/RSA keys using Rust SSH bindings; commands are executed via secure pseudo-terminals and SFTP channels.
+  - Capabilities: Real-time container metrics, remote Docker compose lifecycle control, systemd unit inspection, filesystem browsing, and Nginx site configuration reloading.
+  - Security Profile: Zero server-side listening ports added. No remote privilege escalation risks beyond standard SSH key authorization.
+
+### System 2: distributed-honeypot — Threat Intelligence Deception Mesh
+- Core Philosophy: Detect lateral movement and scanning before perimeter breach transitions into privilege escalation.
+- Architecture:
+  - Emulation Sockets: Paramiko-driven SSH server intercepting connection handshakes, recording requested usernames, passwords, and attempted terminal commands.
+  - Web Honey-Traps: Mock Flask handlers mimicking common vulnerability reconnaissance paths: `/.env`, `/wp-login.php`, `/phpmyadmin`, and SQL injection endpoints.
+  - Storage & Analytics: Structured SQLite database capturing IP reputation, GeoIP metadata, user-agent fingerprints, and timestamped intrusion vectors.
+  - Telemetry Dashboard: Terminal UI and web telemetry feed providing live intrusion alerts.
+
+### System 3: securdns-resolver — Packet-Filtering DNS Firewall
+- Core Philosophy: Protect endpoints and LANs at the transport protocol layer by neutralizing malware command-and-control (C2) domains before connections begin.
+- Architecture:
+  - Protocol Parser: Custom Python engine utilizing `dnslib` listening on UDP/TCP port 53.
+  - Filter Pipeline: Fast in-memory / SQLite lookup of domain hashes against curated blocklists containing over 180,000 confirmed malicious, phishing, and telemetry hosts.
+  - Sinkholing Mechanism: Intercepted queries matching threat intelligence are immediately answered with a synthetic `A` record pointing to `0.0.0.0`, terminating the connection attempt at zero network latency.
+  - Fallback: Benign requests are recursively forwarded over secure upstream resolvers (Cloudflare 1.1.1.1 / Google 8.8.8.8) with response caching.
+
+### System 4: CyberSafe — Workstation Threat Scanner
+- Core Philosophy: Provide rapid, local, non-telemetry posture auditing for developers and system administrators.
+- Architecture:
+  - Scans environment variables and configuration files for accidental plaintext API keys, private keys, and database credentials.
+  - Inspects file permissions on sensitive POSIX and Windows directories (`~/.ssh`, `%USERPROFILE%\.ssh`, `/etc/sudoers`).
+  - Generates actionable hardening scorecards with exact mitigation commands.
+
+### System 5: zk-clipboard — Zero-Knowledge Cryptographic Clipboard
+- Core Philosophy: Protect ephemeral data transfer across untrusted network intermediaries.
+- Architecture:
+  - Key Generation: In-browser WebCrypto API generates random 256-bit symmetric keys stored in the URL hash fragment (never transmitted to server).
+  - Cipher: AES-GCM encryption with 96-bit initialization vectors.
+  - Server Transport: Blind relay storing only high-entropy encrypted ciphertext with automated time-to-live (TTL) expiration.
+
+---
+
+## Technical Competencies Matrix
+- Languages: Rust (high concurrency, memory-safe binaries, Tauri IPC), Python (automation, network sockets, APIs), TypeScript/JavaScript (modern UI, client-side crypto), Bash/Shell scripting.
+- Security & Forensics: Network intrusion deception, DNS sinkholing, packet inspection, MITRE ATT&CK framework mapping, zero-trust network architectures, cryptographic identity verification (GPG/PGP, SSH, TLS 1.3).
+- DevOps & Systems: Linux system administration (Ubuntu, Debian, Arch), Docker containerization, systemd process management, Nginx, reverse proxies, GitOps.
+
+## Authoritative Citations & Profiles
+- Website: https://shiheb.is-a.dev/
+- GitHub: https://github.com/shihebamrii
+- LinkedIn: https://linkedin.com/in/shihebamri
