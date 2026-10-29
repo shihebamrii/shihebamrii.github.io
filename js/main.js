@@ -646,7 +646,7 @@ function initTerminal() {
         case "about":
         case "whoami":
           printLine(`
-            <span class="term-cyan">Shiheb Amri</span> — Full-Stack Engineer &amp; Cybersecurity Specialist.<br>
+            <span class="term-cyan">Shiheb Amri</span> (Aka: <span class="term-green">Chiheb Amri</span> / <span class="term-amber">شهاب عامري</span> / <span class="term-cyan">shihebamrii</span>) — Full-Stack Engineer &amp; Cybersecurity Specialist.<br>
             • Focused on local-first computing, zero-trust architectures, and network defense.<br>
             • Primary systems stack: Rust, Tauri, SolidJS, Python, Docker, Linux.<br>
             • Verified GitHub profile: <span class="term-green">https://github.com/shihebamrii</span>
