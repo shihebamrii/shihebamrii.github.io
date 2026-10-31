@@ -379,6 +379,12 @@ body {
   flex-shrink: 0;
 }
 
+.hero-avatar-wrapper picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .hero-avatar {
   width: 100%;
   height: 100%;
